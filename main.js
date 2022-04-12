@@ -62,6 +62,7 @@ const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
 const displayMovements = function (movements) {
+  containerMovements.innerHTML = "";
   movements.forEach(function (mov, i) {
     const type = mov > 0 ? "deposit" : "withdrawal";
 
@@ -77,4 +78,10 @@ const displayMovements = function (movements) {
   });
 };
 
+const displayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = balance;
+};
+
 displayMovements(account1.movements);
+displayBalance(account1.movements);
